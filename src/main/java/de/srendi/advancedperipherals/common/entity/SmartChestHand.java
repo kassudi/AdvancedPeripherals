@@ -103,12 +103,19 @@ public class SmartChestHand extends Entity {
         return true;
     }
 
+    // 1.20.1 has no passenger attachment points (getVehicleAttachmentPoint), so the hand places itself at the eyes of its
+    // owner plus the relative position, which is the same position the attachment point resulted in on 1.21
     @Override
-    public Vec3 getVehicleAttachmentPoint(Entity owner) {
-        Vec3 pos = owner.getPassengerRidingPosition(this);
+    public void rideTick() {
+        this.setDeltaMovement(Vec3.ZERO);
+        this.tick();
+        LivingEntity owner = this.getOwner();
+        if (owner == null || this.isRemoved()) {
+            return;
+        }
         Vec3 basePos = owner.getEyePosition();
         Vector3f relPos = this.getRelativePos();
-        return pos.subtract(basePos.add(relPos.x, relPos.y, relPos.z));
+        this.setPos(basePos.x + relPos.x, basePos.y + relPos.y, basePos.z + relPos.z);
     }
 
     public Vector3f getRelativePos() {
