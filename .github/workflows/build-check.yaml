@@ -17,7 +17,10 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          # 17 is the compile toolchain, the last entry (21) is used to run Gradle itself, see .tool-versions
+          java-version: |
+            17
+            21
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
       - name: Build
