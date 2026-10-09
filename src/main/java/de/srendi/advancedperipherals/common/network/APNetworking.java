@@ -16,6 +16,7 @@ import de.srendi.advancedperipherals.common.network.toserver.GlassesHotkeyPacket
 import de.srendi.advancedperipherals.common.network.toserver.KeyboardMouseClickPacket;
 import de.srendi.advancedperipherals.common.network.toserver.KeyboardMouseMovePacket;
 import de.srendi.advancedperipherals.common.network.toserver.KeyboardMouseScrollPacket;
+import de.srendi.advancedperipherals.common.network.toserver.OverlayClickPacket;
 import de.srendi.advancedperipherals.common.network.toserver.OverlayModuleClientInfoPacket;
 import de.srendi.advancedperipherals.common.network.toserver.PlayerInteractionPacket;
 import de.srendi.advancedperipherals.common.network.toserver.RetrieveUsernamePacket;
@@ -60,6 +61,7 @@ public class APNetworking {
         registerClientToServer(KeyboardMouseClickPacket.class, KeyboardMouseClickPacket::new);
         registerClientToServer(KeyboardMouseMovePacket.class, KeyboardMouseMovePacket::new);
         registerClientToServer(KeyboardMouseScrollPacket.class, KeyboardMouseScrollPacket::new);
+        registerClientToServer(OverlayClickPacket.class, OverlayClickPacket::new);
         registerClientToServer(OverlayModuleClientInfoPacket.class, OverlayModuleClientInfoPacket::new);
         registerClientToServer(PlayerInteractionPacket.class, PlayerInteractionPacket::new);
         registerClientToServer(RetrieveUsernamePacket.class, RetrieveUsernamePacket::new);

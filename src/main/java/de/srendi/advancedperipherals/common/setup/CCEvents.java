@@ -62,6 +62,14 @@ public final class CCEvents {
     // "overlay_resize"
     public static final String OVERLAY_RESIZE = "overlay_resize";
 
+    // Fires when a player clicks with the free mouse cursor while the glasses keyboard screen is open
+    // by: keyboard_module
+    //
+    // "overlay_click", x: number, y: number, button: number
+    // x, y: Cursor position in GUI-scaled pixels, the same coordinates 2D overlay objects use
+    // button: The mouse button, 1 = left, 2 = right, 3 = middle
+    public static final String OVERLAY_CLICK = "overlay_click";
+
     // Fires when a player changed its dimension
     // by: player_detector
     //

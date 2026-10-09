@@ -18,6 +18,7 @@ import de.srendi.advancedperipherals.common.network.APNetworking;
 import de.srendi.advancedperipherals.common.network.toserver.KeyboardMouseClickPacket;
 import de.srendi.advancedperipherals.common.network.toserver.KeyboardMouseMovePacket;
 import de.srendi.advancedperipherals.common.network.toserver.KeyboardMouseScrollPacket;
+import de.srendi.advancedperipherals.common.network.toserver.OverlayClickPacket;
 import de.srendi.advancedperipherals.common.setup.APTranslations;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -130,6 +131,11 @@ public class KeyboardScreen extends Screen implements MenuAccess<KeyboardContain
 
     @Override
     public boolean mouseClicked(double x, double y, int button) {
+        if (this.mouseState == MouseState.NORMAL) {
+            // Free cursor: report the click position so computers can build clickable overlays
+            APNetworking.sendToServer(new OverlayClickPacket(x, y, button + 1));
+            return true;
+        }
         if (this.mouseState != MouseState.CAPTURE) {
             return false;
         }
