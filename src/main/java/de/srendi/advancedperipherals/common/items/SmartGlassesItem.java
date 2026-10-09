@@ -110,16 +110,18 @@ public class SmartGlassesItem extends BaseArmorItem implements IComputerItem, IM
         };
     }
 
+    @Override
     public boolean isEnabled() {
         return true;
     }
 
-    // @Override // TODO: what's the replacement in 1.20.1?
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) {
+    // IForgeItem takes an Entity here on 1.20.1, on 1.21 it is a LivingEntity
+    @Override
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
         if (!super.canEquip(stack, armorType, entity)) {
             return false;
         }
-        if (!getEquippedCurios(entity).isEmpty()) {
+        if (entity instanceof LivingEntity livingEntity && !getEquippedCurios(livingEntity).isEmpty()) {
             return false;
         }
         return true;
