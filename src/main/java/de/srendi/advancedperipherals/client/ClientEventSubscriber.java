@@ -2,6 +2,7 @@ package de.srendi.advancedperipherals.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.platform.Window;
+import de.srendi.advancedperipherals.client.screens.OverlayCursorScreen;
 import de.srendi.advancedperipherals.client.smartglasses.OverlayObjectHolder;
 import de.srendi.advancedperipherals.common.entity.TurtleSeatEntity;
 import de.srendi.advancedperipherals.common.items.SmartGlassesItem;
@@ -69,6 +70,14 @@ public class ClientEventSubscriber {
         if (smartGlasses.isEmpty()) {
             return;
         }
+        // Holding left alt frees the cursor so overlay objects can be clicked, releasing it returns to the game
+        if (minecraft.screen == null && minecraft.mouseHandler.isMouseGrabbed()
+            && SmartGlassesItem.isMarkedOn(smartGlasses)
+            && !OverlayObjectHolder.getObjects().isEmpty()
+            && OverlayCursorScreen.isAltDown()) {
+            minecraft.setScreen(new OverlayCursorScreen());
+        }
+
         int glassesId = ((SmartGlassesItem) smartGlasses.getItem()).getComputerID(smartGlasses);
         Window window = minecraft.getWindow();
 
