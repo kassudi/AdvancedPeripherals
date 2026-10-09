@@ -131,7 +131,7 @@ public class KeyboardScreen extends Screen implements MenuAccess<KeyboardContain
 
     @Override
     public boolean mouseClicked(double x, double y, int button) {
-        if (this.mouseState == MouseState.NORMAL) {
+        if (this.mouseState == MouseState.FREE) {
             // Free cursor: report the click position so computers can build clickable overlays
             APNetworking.sendToServer(new OverlayClickPacket(x, y, button + 1));
             return true;
@@ -175,7 +175,27 @@ public class KeyboardScreen extends Screen implements MenuAccess<KeyboardContain
     }
 
     @Override
+    public boolean keyReleased(int key, int scancode, int modifiers) {
+        if (key == GLFW.GLFW_KEY_LEFT_ALT) {
+            // Holding left alt gives a free cursor, releasing it returns to the normal keyboard mode
+            if (this.mouseState == MouseState.FREE) {
+                if (this.isCapturingMouse()) {
+                    this.grabMouse();
+                } else {
+                    this.grabMouseWithControl();
+                }
+            }
+            return true;
+        }
+        return super.keyReleased(key, scancode, modifiers);
+    }
+
+    @Override
     public final boolean keyPressed(int key, int scancode, int modifiers) {
+        if (key == GLFW.GLFW_KEY_LEFT_ALT) {
+            this.freeCursor();
+            return true;
+        }
         if (key == GLFW.GLFW_KEY_ESCAPE) {
             if (this.minecraft.player != null) {
                 this.minecraft.player.closeContainer();
@@ -198,6 +218,19 @@ public class KeyboardScreen extends Screen implements MenuAccess<KeyboardContain
         } else {
             this.grabMouseWithControl();
         }
+    }
+
+    private void freeCursor() {
+        if (this.mouseState == MouseState.FREE) {
+            return;
+        }
+        Window window = this.minecraft.getWindow();
+        if (this.minecraft.mouseHandler.isMouseGrabbed()) {
+            this.minecraft.mouseHandler.releaseMouse();
+        } else {
+            InputConstants.grabOrReleaseMouse(window.getWindow(), InputConstants.CURSOR_NORMAL, window.getScreenWidth() / 2.0, window.getScreenHeight() / 2.0);
+        }
+        this.mouseState = MouseState.FREE;
     }
 
     private void grabMouseWithControl() {
@@ -243,6 +276,6 @@ public class KeyboardScreen extends Screen implements MenuAccess<KeyboardContain
     }
 
     private enum MouseState {
-        RELEASED, NORMAL, CAPTURE
+        RELEASED, NORMAL, CAPTURE, FREE
     }
 }
