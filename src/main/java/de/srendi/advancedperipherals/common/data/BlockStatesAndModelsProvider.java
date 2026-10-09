@@ -20,6 +20,7 @@ public class BlockStatesAndModelsProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        peripheralBlock(Blocks.AR_CONTROLLER.get(), "front");
         peripheralBlock(Blocks.ENVIRONMENT_DETECTOR.get(), "front");
         peripheralBlock(Blocks.CHAT_BOX.get(), "front");
         peripheralBlock(Blocks.PLAYER_DETECTOR.get(), "side", "front");

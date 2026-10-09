@@ -1,0 +1,6 @@
+{
+  "size": 1,
+  "order": 45,
+  "icon": "advancedperipherals:slot/empty_glasses_slot",
+  "validators": ["curios:tag"]
+}

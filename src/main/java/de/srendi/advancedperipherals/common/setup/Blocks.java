@@ -19,6 +19,7 @@ import java.util.function.Supplier;
 
 public class Blocks {
 
+    public static final RegistryObject<Block> AR_CONTROLLER = register("ar_controller", () -> new APBlockEntityBlock<>(BlockEntityTypes.AR_CONTROLLER, false), () -> new APBlockItem(Blocks.AR_CONTROLLER.get(), APConfig.PERIPHERALS_CONFIG.enableARGoggles::get));
     public static final RegistryObject<Block> ENVIRONMENT_DETECTOR = register("environment_detector", () -> new APBlockEntityBlock<>(BlockEntityTypes.ENVIRONMENT_DETECTOR, false), () -> new APBlockItem(Blocks.ENVIRONMENT_DETECTOR.get(), APConfig.PERIPHERALS_CONFIG.enableEnvironmentDetector::get));
     public static final RegistryObject<Block> CHAT_BOX = register("chat_box", () -> new APBlockEntityBlock<>(BlockEntityTypes.CHAT_BOX, true), () -> new APBlockItem(Blocks.CHAT_BOX.get(), APConfig.PERIPHERALS_CONFIG.enableChatBox::get));
     public static final RegistryObject<Block> PLAYER_DETECTOR = register("player_detector", PlayerDetectorBlock::new, () -> new APBlockItem(Blocks.PLAYER_DETECTOR.get(), APConfig.PERIPHERALS_CONFIG.enablePlayerDetector::get));

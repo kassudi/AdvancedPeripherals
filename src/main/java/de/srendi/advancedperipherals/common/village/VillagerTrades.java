@@ -105,6 +105,14 @@ public class VillagerTrades {
             TradeBuilder.createTrade(event, ModRegistry.Blocks.WIRELESS_MODEM_ADVANCED.get(), VillagerTrade.Type.ITEM_FOR_EMERALD, 4, 5)
                     .setXp(8)
                     .build();
+            TradeBuilder.createTrade(event, Blocks.AR_CONTROLLER.get(), VillagerTrade.Type.ITEM_FOR_EMERALD, 3, 5)
+                    .setMaxUses(6)
+                    .setXp(30)
+                    .build();
+            TradeBuilder.createTrade(event, Items.AR_GOGGLES.get(), VillagerTrade.Type.ITEM_FOR_EMERALD, 4, 5)
+                    .setMaxUses(8)
+                    .setXp(30)
+                    .build();
 
         }
     }

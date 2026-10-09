@@ -2,8 +2,11 @@ package de.srendi.advancedperipherals.network;
 
 import de.srendi.advancedperipherals.AdvancedPeripherals;
 import de.srendi.advancedperipherals.network.base.IPacket;
+import de.srendi.advancedperipherals.network.toclient.ClearHudCanvasPacket;
 import de.srendi.advancedperipherals.network.toclient.ToastToClientPacket;
+import de.srendi.advancedperipherals.network.toclient.UpdateHudCanvasPacket;
 import de.srendi.advancedperipherals.network.toclient.UsernameToCachePacket;
+import de.srendi.advancedperipherals.network.toserver.RequestHudCanvasPacket;
 import de.srendi.advancedperipherals.network.toserver.RetrieveUsernamePacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -32,8 +35,11 @@ public class APNetworking {
     public static void init() {
         registerServerToClient(ToastToClientPacket.class, ToastToClientPacket::decode);
         registerServerToClient(UsernameToCachePacket.class, UsernameToCachePacket::decode);
+        registerServerToClient(UpdateHudCanvasPacket.class, UpdateHudCanvasPacket::decode);
+        registerServerToClient(ClearHudCanvasPacket.class, ClearHudCanvasPacket::decode);
 
         registerClientToServer(RetrieveUsernamePacket.class, RetrieveUsernamePacket::decode);
+        registerClientToServer(RequestHudCanvasPacket.class, RequestHudCanvasPacket::decode);
     }
 
     public static <MSG extends IPacket> void registerServerToClient(Class<MSG> packet, Function<FriendlyByteBuf, MSG> decode) {

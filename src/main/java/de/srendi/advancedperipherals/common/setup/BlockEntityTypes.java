@@ -8,6 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BlockEntityTypes {
 
+    public static final RegistryObject<BlockEntityType<ARControllerEntity>> AR_CONTROLLER = Registration.TILE_ENTITIES.register("ar_controller", () -> new BlockEntityType<>(ARControllerEntity::new, Sets.newHashSet(Blocks.AR_CONTROLLER.get()), null));
     public static final RegistryObject<BlockEntityType<ChatBoxEntity>> CHAT_BOX = Registration.TILE_ENTITIES.register("chat_box", () -> new BlockEntityType<>(ChatBoxEntity::new, Sets.newHashSet(Blocks.CHAT_BOX.get()), null));
     public static final RegistryObject<BlockEntityType<EnvironmentDetectorEntity>> ENVIRONMENT_DETECTOR = Registration.TILE_ENTITIES.register("environment_detector", () -> new BlockEntityType<>(EnvironmentDetectorEntity::new, Sets.newHashSet(Blocks.ENVIRONMENT_DETECTOR.get()), null));
     public static final RegistryObject<BlockEntityType<PlayerDetectorEntity>> PLAYER_DETECTOR = Registration.TILE_ENTITIES.register("player_detector", () -> new BlockEntityType<>(PlayerDetectorEntity::new, Sets.newHashSet(Blocks.PLAYER_DETECTOR.get()), null));

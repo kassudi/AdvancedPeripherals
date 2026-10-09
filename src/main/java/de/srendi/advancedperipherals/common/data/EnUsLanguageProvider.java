@@ -48,10 +48,12 @@ public class EnUsLanguageProvider extends LanguageProvider {
         addItem(Items.OVERPOWERED_WEAK_AUTOMATA_CORE, "Overpowered Weak Automata Core");
         addItem(Items.OVERPOWERED_HUSBANDRY_AUTOMATA_CORE, "Overpowered Husbandry Automata Core");
         addItem(Items.OVERPOWERED_END_AUTOMATA_CORE, "Overpowered End Automata Core");
+        addItem(Items.AR_GOGGLES, "AR Goggles");
         addItem(Items.MEMORY_CARD, "Memory Card");
     }
 
     private void addBlocks() {
+        addBlock(Blocks.AR_CONTROLLER, "AR Controller");
         addBlock(Blocks.BLOCK_READER, "Block Reader");
         addBlock(Blocks.CHAT_BOX, "Chat Box");
         addBlock(Blocks.COLONY_INTEGRATOR, "Colony Integrator");
@@ -104,6 +106,9 @@ public class EnUsLanguageProvider extends LanguageProvider {
     private void addTooltips() {
         addTooltip("show_desc", "&b[&7%s&b] &7For Description");
         addTooltip("disabled", "&cThis item is disabled in the config, so you can craft it, but it'll not have any functionality.");
+        addTooltip(Blocks.AR_CONTROLLER.get(), "&7Used to control linked AR goggles wirelessly.");
+        addTooltip(Items.AR_GOGGLES.get(), "&7Provides a HUD overlay, controllable by the linked AR Controller. Right click the controller to link.");
+        addTooltip("ar_goggles.binding", "&7Bound to controller at &b%d %d %d&7.");
         addTooltip(Items.COMPUTER_TOOL.get(), "&7This tool was made to tune our blocks. But for now, it's just a blue useless wrench.");
         addTooltip(Blocks.ENERGY_DETECTOR.get(), "&7Can detect energy flow and acts as a resistor.");
         addTooltip(Items.CHUNK_CONTROLLER.get(), "&7A crafting ingredient for the Chunky Turtle.");
@@ -130,6 +135,8 @@ public class EnUsLanguageProvider extends LanguageProvider {
     }
 
     private void addText() {
+        add("text." + AdvancedPeripherals.MOD_ID + ".linked_goggles", "Linked the AR goggles to the controller");
+        add("curios.identifier.glasses", "Glasses");
         add("text." + AdvancedPeripherals.MOD_ID + ".removed_player", "Cleared the memory card");
         add("text." + AdvancedPeripherals.MOD_ID + ".added_player", "Added you to the memory card");
         add("text." + AdvancedPeripherals.MOD_ID + ".automata_core_feed_by_player", "You're trying to feed an entity to a soul, but your own body refuses to do this. Maybe something more mechanical can do this?");

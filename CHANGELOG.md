@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Re-added the AR Controller and the AR Goggles, ported from 1.18.2. The goggles can be worn as a helmet or in the Curios `glasses` slot
+
 ### Fixed
 - [#821] Fixed minimum version requirement of RS
 

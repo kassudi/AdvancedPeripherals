@@ -5,15 +5,20 @@ import com.mojang.brigadier.context.CommandContextBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import de.srendi.advancedperipherals.AdvancedPeripherals;
 import de.srendi.advancedperipherals.common.configuration.APConfig;
+import de.srendi.advancedperipherals.common.items.ARGogglesItem;
 import de.srendi.advancedperipherals.common.util.Pair;
+import de.srendi.advancedperipherals.network.APNetworking;
+import de.srendi.advancedperipherals.network.toclient.ClearHudCanvasPacket;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.MessageArgument;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.event.ServerChatEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -66,6 +71,15 @@ public class Events {
         String toDim = event.getTo().location().toString();
 
         putPlayerMessage(Pair.of(getLastPlayerMessageID(), new PlayerMessageObject("playerChangedDimension", player.getName().getString(), fromDim, toDim)));
+    }
+
+    @SubscribeEvent
+    public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer serverPlayer))
+            return;
+        // Remove the overlay when the goggles are taken off
+        if (event.getFrom().getItem() instanceof ARGogglesItem)
+            APNetworking.sendTo(new ClearHudCanvasPacket(), serverPlayer);
     }
 
     @SubscribeEvent

@@ -39,6 +39,10 @@ public class RecipesProvider extends RecipeProvider implements IConditionBuilder
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
 
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, Blocks.AR_CONTROLLER.get()).define('E', Tags.Items.ENDER_PEARLS).define('C', CASING).define('G', Items.SMOOTH_STONE).pattern("GEG").pattern("ECE").pattern("GEG").unlockedBy(HAS_ITEM, has(CASING)).save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, de.srendi.advancedperipherals.common.setup.Items.AR_GOGGLES.get()).define('E', Tags.Items.ENDER_PEARLS).define('S', Tags.Items.RODS_WOODEN).define('G', Tags.Items.GLASS_BLACK).pattern("GSG").pattern(" E ").unlockedBy(HAS_ITEM, has(Items.STICK)).save(consumer);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, Blocks.CHAT_BOX.get()).define('P', ItemTags.LOGS).define('A', CASING).define('G', Tags.Items.INGOTS_GOLD).pattern("PPP").pattern("PAP").pattern("PGP").unlockedBy(HAS_ITEM, has(CASING)).save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, de.srendi.advancedperipherals.common.setup.Items.CHUNK_CONTROLLER.get()).define('I', Tags.Items.INGOTS_IRON).define('R', Tags.Items.DUSTS_REDSTONE).define('A', Items.ENDER_EYE).pattern("IRI").pattern("RAR").pattern("IRI").unlockedBy(HAS_ITEM, has(Items.RESPAWN_ANCHOR)).save(consumer);
