@@ -23,6 +23,13 @@ public class TextObject extends ThreeDimensionalObject {
     @BooleanProperty
     public boolean center = false;
 
+    /**
+     * Makes the text always face the camera. Only affects text in the world (not gui text),
+     * the position is still absolute (or relative if relativePosition is set).
+     */
+    @BooleanProperty
+    public boolean billboard = false;
+
     public TextObject(OverlayModule module) {
         super(module);
     }

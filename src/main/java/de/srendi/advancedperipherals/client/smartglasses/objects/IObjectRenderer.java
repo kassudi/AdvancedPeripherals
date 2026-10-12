@@ -3,6 +3,7 @@ package de.srendi.advancedperipherals.client.smartglasses.objects;
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.srendi.advancedperipherals.common.smartglasses.modules.overlay.OverlayObject;
 import de.srendi.advancedperipherals.common.smartglasses.modules.overlay.objects.RenderableObject;
+import de.srendi.advancedperipherals.common.smartglasses.modules.overlay.objects.TextObject;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
@@ -33,7 +34,11 @@ public interface IObjectRenderer<O extends OverlayObject> {
             }
         }
         poseStack.translate(obj.getX(partialTick), obj.getY(partialTick), obj.getZ(partialTick));
-        poseStack.mulPose(obj.getRotation(partialTick));
+        if (obj instanceof TextObject text && text.billboard) {
+            poseStack.mulPose(eyeRotation);
+        } else {
+            poseStack.mulPose(obj.getRotation(partialTick));
+        }
     }
 
     static void apply3DTransforms(Matrix4f mat, RenderableObject obj, float partialTick, Vec3 eyePos, Quaternionf eyeRotation) {
@@ -44,6 +49,10 @@ public interface IObjectRenderer<O extends OverlayObject> {
             }
         }
         mat.translate(obj.getX(partialTick), obj.getY(partialTick), obj.getZ(partialTick));
-        mat.rotate(obj.getRotation(partialTick));
+        if (obj instanceof TextObject text && text.billboard) {
+            mat.rotate(eyeRotation);
+        } else {
+            mat.rotate(obj.getRotation(partialTick));
+        }
     }
 }
