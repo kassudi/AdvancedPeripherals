@@ -5,6 +5,7 @@ import de.srendi.advancedperipherals.client.smartglasses.objects.IObjectRenderer
 import de.srendi.advancedperipherals.common.items.SmartGlassesItem;
 import de.srendi.advancedperipherals.common.smartglasses.modules.overlay.OverlayObject;
 import de.srendi.advancedperipherals.common.smartglasses.modules.overlay.objects.RenderableObject;
+import de.srendi.advancedperipherals.client.ShaderCompat;
 import net.minecraft.client.Camera;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -28,6 +29,9 @@ public class OverlayModuleLevelRenderer {
     @SubscribeEvent
     public static void renderLevelState(RenderLevelStageEvent event) {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) {
+            return;
+        }
+        if (ShaderCompat.isRenderingShadowPass()) {
             return;
         }
         PoseStack poseStack = event.getPoseStack();
