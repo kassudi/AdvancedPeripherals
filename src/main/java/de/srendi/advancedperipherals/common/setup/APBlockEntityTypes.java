@@ -16,6 +16,8 @@ import de.srendi.advancedperipherals.common.blocks.blockentities.NBTStorageEntit
 import de.srendi.advancedperipherals.common.blocks.blockentities.PlayerDetectorEntity;
 // import de.srendi.advancedperipherals.common.blocks.blockentities.RSBridgeEntity;
 import de.srendi.advancedperipherals.common.blocks.blockentities.SmartRailBlockEntity;
+import de.srendi.advancedperipherals.common.blocks.remote.RemoteHubEntity;
+import de.srendi.advancedperipherals.common.blocks.remote.RemoteProbeEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -37,6 +39,9 @@ public class APBlockEntityTypes {
     public static final RegistryObject<BlockEntityType<PlayerDetectorEntity>> PLAYER_DETECTOR = APRegistration.BLOCK_ENTITIES.register("player_detector", () -> new BlockEntityType<>(PlayerDetectorEntity::new, Set.of(APBlocks.PLAYER_DETECTOR.get()), null));
     // public static final RegistryObject<BlockEntityType<RSBridgeEntity>> RS_BRIDGE = APAddon.REFINEDSTORAGE.isLoaded() ? APRegistration.BLOCK_ENTITIES.register("rs_bridge", () -> new BlockEntityType<>(RSBridgeEntity::new, Set.of(APBlocks.RS_BRIDGE.get()), null)) : null;
     public static final RegistryObject<BlockEntityType<SmartRailBlockEntity>> SMART_RAIL = APRegistration.BLOCK_ENTITIES.register("smart_rail", () -> new BlockEntityType<>(SmartRailBlockEntity::new, Set.of(APBlocks.SMART_RAIL.get()), null));
+
+    public static final RegistryObject<BlockEntityType<RemoteProbeEntity>> REMOTE_PROBE = APRegistration.BLOCK_ENTITIES.register("remote_probe", () -> new BlockEntityType<>(RemoteProbeEntity::new, Set.of(APBlocks.REMOTE_PROBE.get()), null));
+    public static final RegistryObject<BlockEntityType<RemoteHubEntity>> REMOTE_HUB = APRegistration.BLOCK_ENTITIES.register("remote_hub", () -> new BlockEntityType<>(RemoteHubEntity::new, Set.of(APBlocks.REMOTE_HUB.get()), null));
 
     public static void register() {
     }

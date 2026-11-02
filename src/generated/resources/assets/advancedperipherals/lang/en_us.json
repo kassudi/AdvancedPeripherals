@@ -136,5 +136,9 @@
   "turtle.advancedperipherals.overpowered_weak_automata": "Overpowered Weak Automata",
   "turtle.advancedperipherals.player_turtle": "Player Detector",
   "turtle.advancedperipherals.saddle_turtle": "Saddle",
-  "turtle.advancedperipherals.weak_automata": "Weak Automata"
+  "turtle.advancedperipherals.weak_automata": "Weak Automata",
+  "block.advancedperipherals.remote_probe": "Remote Probe",
+  "block.advancedperipherals.remote_probe.tooltip": "&7Put it against a machine. Right click with dyes to set a frequency; every Remote Hub with the same colours gets the machine as a wired peripheral.",
+  "block.advancedperipherals.remote_hub": "Remote Hub",
+  "block.advancedperipherals.remote_hub.tooltip": "&7Next to a wired modem or cable. Right click with dyes to set a frequency; it links every Remote Probe with the same colours into the wired network."
 }

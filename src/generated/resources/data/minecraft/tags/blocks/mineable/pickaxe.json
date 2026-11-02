@@ -14,6 +14,8 @@
     "advancedperipherals:inventory_manager",
     "advancedperipherals:colony_integrator",
     "advancedperipherals:me_bridge",
-    "advancedperipherals:smart_rail"
+    "advancedperipherals:smart_rail",
+    "advancedperipherals:remote_probe",
+    "advancedperipherals:remote_hub"
   ]
 }

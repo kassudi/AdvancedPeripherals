@@ -1,5 +1,7 @@
 {
   "values": [
-    "advancedperipherals:peripheral_casing"
+    "advancedperipherals:peripheral_casing",
+    "advancedperipherals:remote_probe",
+    "advancedperipherals:remote_hub"
   ]
 }

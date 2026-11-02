@@ -1,0 +1,31 @@
+{
+  "textures": {
+    "0": "advancedperipherals:block/remote_probe",
+    "particle": "advancedperipherals:block/remote_probe"
+  },
+  "elements": [
+    {
+      "from": [3, 3, 0],
+      "to": [13, 13, 4],
+      "faces": {
+        "north": {"uv": [3, 3, 13, 13], "texture": "#0"},
+        "east": {"uv": [0, 3, 4, 13], "texture": "#0"},
+        "south": {"uv": [3, 3, 13, 13], "texture": "#0"},
+        "west": {"uv": [0, 3, 4, 13], "texture": "#0"},
+        "up": {"uv": [3, 0, 13, 4], "texture": "#0"},
+        "down": {"uv": [3, 0, 13, 4], "texture": "#0"}
+      }
+    },
+    {
+      "from": [7, 7, 4],
+      "to": [9, 9, 7],
+      "faces": {
+        "east": {"uv": [6, 6, 9, 9], "texture": "#0"},
+        "south": {"uv": [6, 6, 9, 9], "texture": "#0"},
+        "west": {"uv": [6, 6, 9, 9], "texture": "#0"},
+        "up": {"uv": [6, 6, 9, 9], "texture": "#0"},
+        "down": {"uv": [6, 6, 9, 9], "texture": "#0"}
+      }
+    }
+  ]
+}

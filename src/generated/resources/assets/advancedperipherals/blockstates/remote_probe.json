@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "advancedperipherals:block/remote_probe",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "advancedperipherals:block/remote_probe",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "advancedperipherals:block/remote_probe"
+    },
+    "facing=south": {
+      "model": "advancedperipherals:block/remote_probe",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "advancedperipherals:block/remote_probe",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "advancedperipherals:block/remote_probe",
+      "y": 270
+    }
+  }
+}

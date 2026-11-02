@@ -6,6 +6,8 @@ import de.srendi.advancedperipherals.common.blocks.PlayerDetectorBlock;
 import de.srendi.advancedperipherals.common.blocks.SmartRailBlock;
 import de.srendi.advancedperipherals.common.blocks.base.APBlockEntityBlock;
 import de.srendi.advancedperipherals.common.blocks.base.BaseBlock;
+import de.srendi.advancedperipherals.common.blocks.remote.RemoteHubBlock;
+import de.srendi.advancedperipherals.common.blocks.remote.RemoteProbeBlock;
 import de.srendi.advancedperipherals.common.configuration.APConfig;
 import de.srendi.advancedperipherals.common.items.APBlockItem;
 import de.srendi.advancedperipherals.lib.annotation.DefaultTooltip;
@@ -85,6 +87,13 @@ public class APBlocks {
     @DefaultTranslation("Smart Rail")
     @DefaultTooltip("&7An advanced rail that can be controlled by computer.")
     public static final RegistryObject<SmartRailBlock> SMART_RAIL = register("smart_rail", SmartRailBlock::new, () -> new APBlockItem(APBlocks.SMART_RAIL.get(), () -> true));
+
+    @DefaultTranslation("Remote Probe")
+    @DefaultTooltip("&7Put it against a machine. Right click with dyes to set a frequency; every Remote Hub with the same colours gets the machine as a wired peripheral.")
+    public static final RegistryObject<RemoteProbeBlock> REMOTE_PROBE = register("remote_probe", RemoteProbeBlock::new, () -> new APBlockItem(APBlocks.REMOTE_PROBE.get(), () -> true));
+    @DefaultTranslation("Remote Hub")
+    @DefaultTooltip("&7Next to a wired modem or cable. Right click with dyes to set a frequency; it links every Remote Probe with the same colours into the wired network.")
+    public static final RegistryObject<RemoteHubBlock> REMOTE_HUB = register("remote_hub", RemoteHubBlock::new, () -> new APBlockItem(APBlocks.REMOTE_HUB.get(), () -> true));
 
     public static void register() {
     }
